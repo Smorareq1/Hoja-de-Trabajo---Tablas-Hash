@@ -42,11 +42,19 @@ public class Empleado
     
     public static void MostrarEmpleados()
     {
+        Console.WriteLine("ID    | Nombre           | Departamento");
+        Console.WriteLine("--------------------------------------");
+
         foreach (DictionaryEntry empleado in TablaEmpleados)
         {
-            Console.WriteLine("ID: {0}, Nombre: {1}, Departamento: {2}", ((Empleado)empleado.Value).ID, ((Empleado)empleado.Value).Nombre, ((Empleado)empleado.Value).Departamento);
+            string id = ((Empleado)empleado.Value).ID.PadRight(6); // Alineación a la derecha
+            string nombre = ((Empleado)empleado.Value).Nombre.PadRight(18); // Alineación a la izquierda
+            string departamento = ((Empleado)empleado.Value).Departamento.PadRight(14); // Alineación a la izquierda
+
+            Console.WriteLine($"{id}| {nombre}| {departamento}");
         }
     }
+
     
     public static void BuscarEmpleado(string ID)
     {
